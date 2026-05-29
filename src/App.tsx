@@ -1,13 +1,27 @@
 import { useTwseApi } from "./hooks/useTwseApi";
 import { TwseApiPath } from "./constants/twseApiPath";
+import { useEffect } from "react";
 
 function App() {
+  
+  useEffect(() => {
+    fetch("https://raw.githubusercontent.com/isdnhinet/twse-data/main/data/20260527.json")
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+      });
+  }, []); 
+
+
+
   const no = "2330";
   const date = "20260525";
   const { result: resultSTD, status: statusSTD } = useTwseApi( 
     TwseApiPath.STOCK_DAY, { stockNo: no , date: date }
   );
   const { data: dataSTD, fields: fieldsSTD } = resultSTD;
+
+  /*
   const { result: resultSTDA, status: statusSTDA } = useTwseApi(
     TwseApiPath.STOCK_DAY_ALL, { date: date }
   );
@@ -16,7 +30,7 @@ function App() {
     const { data: dataSTDA, fields: fieldsSTDA } = resultSTDA;
     console.log(dataSTDA);
     console.log(fieldsSTDA);
-  }
+  }*/
 
   if (statusSTD.loading) return <p>twse載入中...</p>;
   if (statusSTD.error) return <p>twse錯誤: {statusSTD.error}</p>;

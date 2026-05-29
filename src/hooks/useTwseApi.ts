@@ -7,8 +7,8 @@ interface TwseResponse {
 }
 
 export function useTwseApi(
-    path: (typeof TwseApiPath)[keyof typeof TwseApiPath], // API 路徑，例如 "exchangeReport/STOCK_DAY"
-    params: Record<string, string>, // 查詢參數
+    path: (typeof TwseApiPath)[keyof typeof TwseApiPath],
+    params: Record<string, string>,
 ) {
     const [data, setData] = useState<string[][]>([]);
     const [fields, setFields] = useState<string[]>([]);
