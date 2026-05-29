@@ -11,7 +11,7 @@ export function TwseTable({ path, params }: {
     if(status.error) return <div>Error: {status.error}</div>
 
     return (
-        <table>
+        <table className="text-sky-50">
             <thead>
                 <tr>
                     {result.fields.map((field, idx) => (
