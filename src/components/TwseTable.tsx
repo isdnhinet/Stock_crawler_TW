@@ -1,4 +1,3 @@
-import React from "react";
 import { useTwseQuery } from "../hooks/useTwseQuery";
 import { BaseUrl } from "../constants/baseUrl";
 
